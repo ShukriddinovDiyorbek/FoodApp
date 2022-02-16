@@ -29,7 +29,6 @@
         android:background="@drawable/edit_background"
         android:gravity="start"
         android:hint="Kerakli mahsulotlar"
-        android:maxLines="1"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@id/et_tartib"
         app:layout_constraintHorizontal_bias="0.504"

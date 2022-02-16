@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import uz.pdp.foodapp.db.MyDatabaseHelper
 import uz.pdp.foodapp.model.Meal
 
@@ -30,13 +31,14 @@ class ChangeFragment : Fragment() {
         val change_btn = root.findViewById<Button>(R.id.change_btn)
 
         change_btn.setOnClickListener {
-            if (et_title.text.length>0 ||et_mahsulotlar.text.length>0 ||et_tartib.text.length>0 ){
+            if (et_title.text.length>0 && et_mahsulotlar.text.length>0 && et_tartib.text.length>0 ){
                 val title = et_title.text.toString()
                 val product = et_mahsulotlar.text.toString()
                 val tartib = et_tartib.text.toString()
                 val meal = Meal(title,product,tartib)
                 myDatabaseHelper.addMeal(meal)
                 Toast.makeText(context, "Succesfully", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
             } else{
                 Toast.makeText(context, "To'liq to'diring", Toast.LENGTH_SHORT).show()
             }
