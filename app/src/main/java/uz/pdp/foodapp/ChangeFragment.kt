@@ -31,10 +31,13 @@ class ChangeFragment : Fragment() {
         val change_btn = root.findViewById<Button>(R.id.change_btn)
 
         change_btn.setOnClickListener {
-            if (et_title.text.length>0 && et_mahsulotlar.text.length>0 && et_tartib.text.length>0 ){
-                val title = et_title.text.toString()
-                val product = et_mahsulotlar.text.toString()
-                val tartib = et_tartib.text.toString()
+            val s1 = et_title.text.trim(' ').isNotEmpty()
+            val s2 = et_mahsulotlar.text.trim(' ').isNotEmpty()
+            val s3 = et_tartib.text.trim(' ').isNotEmpty()
+            if (s1 && s2 && s3 ){
+                val title = et_title.text.trim(' ').toString()
+                val product = et_mahsulotlar.text.trim(' ').toString()
+                val tartib = et_tartib.text.trim(' ').toString()
                 val meal = Meal(title,product,tartib)
                 myDatabaseHelper.addMeal(meal)
                 Toast.makeText(context, "Succesfully", Toast.LENGTH_SHORT).show()
